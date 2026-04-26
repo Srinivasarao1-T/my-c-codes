@@ -1,0 +1,83 @@
+#include<stdio.h>
+#include<stdio_ext.h>
+#define MAX 10
+int cnt=0;
+typedef struct
+{
+	char vehicle_no[10];
+	char type[10];
+}par;
+void printmenu()
+{
+	printf("\n..............\n");
+	printf("\nI/i: Parking a vehicle\nR/r:remove a vehicle\nD/d:Display current status\nC/c:count vechile\nQ/q:exit\n");
+	printf("\n..............\n");
+}
+void input(par *arr)
+{
+	printf("\n1:car 2:bike\n");
+	int choice;
+	switch(choice)
+	{
+		case 1:
+                         arr[cnt].type="car";
+			 break;
+		case 2:
+			 arr[cnt].type="bike";
+			 break;
+	        default:printf("Invalid option\n");
+			return;
+	}
+        printf("\nenter the vehicle number\n");
+	scanf("%s",arr[cnt].vehicle_no);
+}
+void display(par *arr)
+{
+	printf("s.no  vehicle no     type\n");
+	for(int i=0;i<cnt;i++)
+	{
+	    printf("%d",i+1);
+	    if(arr[i].vehicle_no==NULL)
+
+	    {
+		    printf(" empty \n");
+		    continue;
+	    }
+            printf("%s",arr[i].vehicle_no);
+            printf("           %s\n",arr[i].type);
+	}
+	printf("\n\n");
+}
+int main()
+{
+    par arr[MAX];
+    char choice;
+    while(1){
+	    printmenu();
+    __fpurge(stdin);
+    scanf("%c",&choice);
+    switch(choice)
+    {
+	    case 'i':
+            case 'I':
+		     input(arr);
+		     break;
+            case 'r':
+            case 'R':
+	//	     remove(arr);
+		     break;
+	    case 'D':
+	    case 'd':
+		     display(arr);
+		     break;
+            case 'c':
+            case 'C':
+	//	     count(arr);
+      		      break;
+            case 'Q':
+            case 'q':
+		      return 0;
+            default: printf("invalid option\n");
+    } 
+    }
+} 
